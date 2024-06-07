@@ -1,0 +1,13 @@
+.pokemon-card {
+  width: 100%;
+  max-width: 19rem;
+  border: 2px solid black;
+  border-radius: 18px;
+  margin: inherit;
+}
+
+img {
+  width: 100%;
+  width: 100%;
+  filter: drop-shadow(2px 2px 3px black);
+}
