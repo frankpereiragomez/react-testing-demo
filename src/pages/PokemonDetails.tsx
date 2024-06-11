@@ -9,8 +9,10 @@ const PokemonDetails = (): React.ReactElement => {
 
   const { id } = useParams();
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    fetch(`${apiUrl}/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Fail fetching the data from the api");
@@ -26,7 +28,7 @@ const PokemonDetails = (): React.ReactElement => {
         setError(error.message);
         console.error(error);
       });
-  }, [id]);
+  }, [apiUrl, id]);
 
   return (
     <>
@@ -40,7 +42,7 @@ const PokemonDetails = (): React.ReactElement => {
             }
             alt={pokemonDetails?.name}
           />
-          <h2>{pokemonDetails?.name}</h2>
+          <h2>{pokemonDetails?.name.toUpperCase()}</h2>
           <div>
             <p>{`weight: ${pokemonDetails?.weight}`}</p>
             <p>{`height: ${pokemonDetails?.height}`}</p>

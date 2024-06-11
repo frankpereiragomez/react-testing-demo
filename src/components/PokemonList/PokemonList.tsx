@@ -7,8 +7,10 @@ const PokemonList = (): React.ReactElement => {
   const [pokemons, setPokemons] = useState<PokemonStructure[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon/?limit=20")
+    fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Fail fetching the data");
@@ -43,7 +45,7 @@ const PokemonList = (): React.ReactElement => {
         console.error(error);
         setError("Failed to fetch Pokémon data. Please try again later.");
       });
-  }, []);
+  }, [apiUrl]);
 
   return (
     <>

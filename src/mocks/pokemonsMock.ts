@@ -19,6 +19,24 @@ export const pokemonsMock: PokemonStructure[] = [
           url: "https://pokeapi.co/api/v2/move/13/",
         },
       },
+      {
+        move: {
+          name: "swords-dance",
+          url: "https://pokeapi.co/api/v2/move/14/",
+        },
+      },
+      {
+        move: {
+          name: "cut",
+          url: "https://pokeapi.co/api/v2/move/15/",
+        },
+      },
+      {
+        move: {
+          name: "bind",
+          url: "https://pokeapi.co/api/v2/move/20/",
+        },
+      },
     ],
     sprites: {
       other: {

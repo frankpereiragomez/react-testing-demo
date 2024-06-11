@@ -10,7 +10,7 @@ export const handlers = [
     const { id } = params;
 
     const selectedPockemon = pokemonsMock.find(
-      (pokemon) => id === pokemon.id.toString()
+      (pokemon) => pokemon.id.toString() === id
     );
 
     return HttpResponse.json(selectedPockemon);

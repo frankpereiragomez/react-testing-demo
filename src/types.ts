@@ -8,6 +8,10 @@ interface Move {
   url: string;
 }
 
+interface MoveStructure {
+  move: Move;
+}
+
 interface OfficialArtwork {
   front_default: string;
   front_shiny: string;
@@ -22,11 +26,7 @@ export interface PokemonStructure {
   abilities: Ability[];
   height: number;
   id: number;
-  moves: [
-    {
-      move: Move;
-    }
-  ];
+  moves: MoveStructure[];
   weight: number;
   name: string;
   sprites: {
