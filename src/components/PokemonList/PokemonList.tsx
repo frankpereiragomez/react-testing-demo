@@ -56,7 +56,7 @@ const PokemonList = (): React.ReactElement => {
           {pokemons.map((pokemon) => (
             <li key={pokemon.id}>
               <PokemonCard
-                img={pokemon.sprites.other["official-artwork"].front_default}
+                image={pokemon.sprites.other["official-artwork"].front_default}
                 name={pokemon.name}
                 id={pokemon.id}
               />

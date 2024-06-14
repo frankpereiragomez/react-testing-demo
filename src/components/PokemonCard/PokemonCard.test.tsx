@@ -15,7 +15,7 @@ describe("Given a PokemonCard component", () => {
   describe("When it's rendered", () => {
     test("Then it should show the pokemon's name and image", () => {
       render(
-        <PokemonCard id={pokemonId} name={pokemonName} img={pokemonImage} />,
+        <PokemonCard id={pokemonId} name={pokemonName} image={pokemonImage} />,
         { wrapper: MemoryRouter }
       );
 
@@ -39,7 +39,11 @@ describe("Given a PokemonCard component", () => {
         {
           path: "/",
           element: (
-            <PokemonCard id={pokemonId} img={pokemonImage} name={pokemonName} />
+            <PokemonCard
+              id={pokemonId}
+              image={pokemonImage}
+              name={pokemonName}
+            />
           ),
         },
         { path: "/pokemon/:id", element: <PokemonDetails /> },

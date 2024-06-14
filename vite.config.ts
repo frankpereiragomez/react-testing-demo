@@ -9,7 +9,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "src/jest.setup.ts",
+    setupFiles: "./src/jest.setup.ts",
     include: ["src/**/*.test.{tsx, ts}"],
     exclude: ["**/types.ts", "**/*.d.ts", "src/main.tsx"],
   },

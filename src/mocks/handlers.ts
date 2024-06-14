@@ -1,18 +1,20 @@
 import { http, HttpResponse } from "msw";
 import { pokemonsMock } from "./pokemonsMock";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const handlers = [
-  http.get("https://pokeapi.co/api/v2/pokemon/", () => {
+  http.get(`${apiUrl}/`, () => {
     return HttpResponse.json({ results: pokemonsMock });
   }),
 
-  http.get("https://pokeapi.co/api/v2/pokemon/:id", ({ params }) => {
+  http.get(`${apiUrl}/:id`, ({ params }) => {
     const { id } = params;
 
-    const selectedPockemon = pokemonsMock.find(
+    const selectedPokemon = pokemonsMock.find(
       (pokemon) => pokemon.id.toString() === id
     );
 
-    return HttpResponse.json(selectedPockemon);
+    return HttpResponse.json(selectedPokemon);
   }),
 ];
