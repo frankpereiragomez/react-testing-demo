@@ -1,33 +1,8 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import usePokemonDetails from "../hooks/usePokemonDetails/usePokemonDetails";
 import "./style.css";
-import { PokemonStructure } from "../types";
 
 const PokemonDetails = (): React.ReactElement => {
-  const [pokemonDetails, setPokemonDetails] = useState<PokemonStructure>();
-  const [error, setError] = useState<string | null>(null);
-
-  const { id } = useParams();
-
-  const apiUrl = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    fetch(`${apiUrl}/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to fetch");
-        }
-
-        return response.json();
-      })
-      .then((details) => {
-        setError(null);
-        setPokemonDetails(details);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }, [apiUrl, id]);
+  const { pokemonDetails, error } = usePokemonDetails();
 
   return (
     <>

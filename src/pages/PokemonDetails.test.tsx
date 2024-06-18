@@ -52,8 +52,6 @@ describe("Given a PokemonDetails component", () => {
 
       render(element);
 
-      screen.debug();
-
       const errorMessage = await waitFor(() =>
         screen.getByText(expectedErrorMessage)
       );
