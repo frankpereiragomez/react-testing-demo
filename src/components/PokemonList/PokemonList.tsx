@@ -13,7 +13,7 @@ const PokemonList = (): React.ReactElement => {
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Fail fetching the data");
+          throw new Error("Failed to fetch");
         }
 
         return response.json();
@@ -30,7 +30,6 @@ const PokemonList = (): React.ReactElement => {
               return response.json();
             })
             .catch((error) => {
-              console.error(error);
               throw error;
             });
         });
@@ -42,8 +41,7 @@ const PokemonList = (): React.ReactElement => {
         setError(null);
       })
       .catch((error) => {
-        console.error(error);
-        setError("Failed to fetch Pokémon data. Please try again later.");
+        setError(error.message);
       });
   }, [apiUrl]);
 

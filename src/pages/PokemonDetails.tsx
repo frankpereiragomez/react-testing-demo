@@ -15,7 +15,7 @@ const PokemonDetails = (): React.ReactElement => {
     fetch(`${apiUrl}/${id}`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Fail fetching the data from the api");
+          throw new Error("Failed to fetch");
         }
 
         return response.json();
@@ -26,7 +26,6 @@ const PokemonDetails = (): React.ReactElement => {
       })
       .catch((error) => {
         setError(error.message);
-        console.error(error);
       });
   }, [apiUrl, id]);
 

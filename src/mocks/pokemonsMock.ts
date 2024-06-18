@@ -187,7 +187,7 @@ export const pokemonsMock: PokemonStructure[] = [
   },
   {
     name: "charizard",
-    id: 5,
+    id: 6,
     height: 11,
     weight: 190,
     abilities: [

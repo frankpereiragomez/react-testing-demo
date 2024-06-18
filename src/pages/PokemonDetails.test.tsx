@@ -3,20 +3,22 @@ import { RouteObject } from "react-router-dom";
 import wrapWithRouter from "../utils/testUtils";
 import PokemonDetails from "./PokemonDetails";
 import { pokemonsMock } from "../mocks/pokemonsMock";
+import { server } from "../mocks/node";
+import { errorHandlers } from "../mocks/handlers";
 
 describe("Given a PokemonDetails component", () => {
+  const route: RouteObject[] = [
+    {
+      path: "/pokemon/:id",
+      element: <PokemonDetails />,
+    },
+  ];
+
   describe("When it's rendered", () => {
     test("Then it should show the pokemon details", async () => {
       const { name: pokemonName } = pokemonsMock[0];
       const pokemonWeight = pokemonsMock[0].weight;
       const pokemonHeight = pokemonsMock[0].height;
-
-      const route: RouteObject[] = [
-        {
-          path: "/pokemon/:id",
-          element: <PokemonDetails />,
-        },
-      ];
 
       const { element } = wrapWithRouter(route, ["/pokemon/1"]);
 
@@ -37,6 +39,25 @@ describe("Given a PokemonDetails component", () => {
       expect(expectedImage).toBeInTheDocument();
       expect(expectedWeight).toBeInTheDocument();
       expect(expectedHeight).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered with an id that does not exist", () => {
+    test("Then it should show the 'Failed to fetch' error message", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const expectedErrorMessage = "Failed to fetch";
+
+      const { element } = wrapWithRouter(route, ["/pokemon/12"]);
+
+      render(element);
+
+      screen.debug();
+
+      const errorMessage = await waitFor(() =>
+        screen.getByText(expectedErrorMessage)
+      );
+      expect(errorMessage).toBeInTheDocument();
     });
   });
 });
