@@ -1,5 +1,5 @@
-import usePokemonDetails from "../hooks/usePokemonDetails/usePokemonDetails";
 import "./style.css";
+import usePokemonDetails from "../hooks/usePokemonDetails/usePokemonDetails";
 
 const PokemonDetails = (): React.ReactElement => {
   const { pokemonDetails, error } = usePokemonDetails();

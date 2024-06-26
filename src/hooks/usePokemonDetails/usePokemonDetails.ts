@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PokemonStructure } from "../../types";
+import pokemonServices from "../../services/pokemonServices";
 
 interface usePokemonDetailsStructure {
   pokemonDetails: PokemonStructure | null;
@@ -12,23 +13,14 @@ const usePokemonDetails = (): usePokemonDetailsStructure => {
     null
   );
   const [error, setError] = useState<string | null>(null);
-
   const { id } = useParams();
-
-  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
       try {
-        const response = await fetch(`${apiUrl}/${id}`);
+        const response = await pokemonServices.getPokemonDetails(id as string);
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch");
-        }
-
-        const data = await response.json();
-
-        setPokemonDetails(data);
+        setPokemonDetails(response);
         setError(null);
       } catch (error) {
         setError((error as Error).message);
@@ -36,7 +28,7 @@ const usePokemonDetails = (): usePokemonDetailsStructure => {
     };
 
     fetchPokemonDetails();
-  }, [apiUrl, id]);
+  }, [id]);
 
   return { pokemonDetails, error };
 };

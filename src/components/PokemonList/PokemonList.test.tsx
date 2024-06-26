@@ -7,7 +7,7 @@ import { errorHandlers } from "../../mocks/handlers";
 
 describe("Given a PokemonList component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show a list of five pokemons card", async () => {
+    test("Then it should show a list of six pokemons card", async () => {
       render(<PokemonList />, { wrapper: MemoryRouter });
 
       const pokemonCards = await waitFor(() => screen.getAllByRole("listitem"));

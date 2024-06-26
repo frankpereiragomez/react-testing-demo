@@ -22,6 +22,10 @@ export interface ApiResponse {
   url: string;
 }
 
+export interface ApiMainResponse {
+  results: ApiResponse[];
+}
+
 export interface PokemonStructure {
   abilities: Ability[];
   height: number;
