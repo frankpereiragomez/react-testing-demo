@@ -11,7 +11,7 @@ const PokemonCard = ({ image, name, id }: PokemonProps): React.ReactElement => {
   return (
     <>
       <article className="pokemon-card">
-        <Link to={`pokemon/${id}`}>
+        <Link to={`/pokemon/${id}`}>
           <img src={image} alt={name} />
         </Link>
         <h2>{name}</h2>
