@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { PokemonStructure } from "../../types";
 import pokemonServices from "../../services/pokemonServices";
 
@@ -7,11 +8,12 @@ interface usePokemonDetailsStructure {
   error: string | null;
 }
 
-const usePokemonDetails = (id: string): usePokemonDetailsStructure => {
+const usePokemonDetails = (): usePokemonDetailsStructure => {
   const [pokemonDetails, setPokemonDetails] = useState<PokemonStructure | null>(
     null
   );
   const [error, setError] = useState<string | null>(null);
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {

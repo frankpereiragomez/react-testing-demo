@@ -27,6 +27,10 @@ export const handlers = [
 ];
 
 export const errorHandlers = [
+  http.get(apiUrl, () => {
+    return HttpResponse.error();
+  }),
+
   http.get(`${apiUrl}/:id`, ({ params }) => {
     const { id } = params;
 
@@ -37,9 +41,5 @@ export const errorHandlers = [
     if (!selectedPokemon) {
       return HttpResponse.error();
     }
-  }),
-
-  http.get(apiUrl, () => {
-    return HttpResponse.error();
   }),
 ];
