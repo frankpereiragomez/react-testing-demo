@@ -1,0 +1,27 @@
+article {
+  border: 2px solid black;
+  border-radius: 18px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+article img {
+  width: 100%;
+  width: 100%;
+  filter: drop-shadow(2px 2px 3px black);
+}
+
+article ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  padding: 1rem;
+  border-top: 2px solid black;
+  list-style: none;
+  margin: 0;
+}
+
+article ul li {
+  display: flex;
+  justify-content: center;
+}

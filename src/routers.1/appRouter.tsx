@@ -3,7 +3,6 @@ import paths from "./paths/paths";
 import App from "../components/App/App";
 import PokemonList from "../components/PokemonList/PokemonList";
 import PokemonDetails from "../pages/PokemonDetailsPage/PokemonDetails";
-import PageNotFound from "../pages/PageNotFound/PageNotFound";
 
 const routes: RouteObject[] = [
   {
@@ -21,10 +20,6 @@ const routes: RouteObject[] = [
       {
         path: paths.pokemonDetails,
         element: <PokemonDetails />,
-      },
-      {
-        path: paths.notFound,
-        element: <PageNotFound />,
       },
     ],
   },

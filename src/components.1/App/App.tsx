@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./style.css";
 import PokemonList from "../PokemonList/PokemonList";
-import PokemonDetails from "../../pages/PokemonDetails";
+import PokemonDetails from "../../pages/PokemonDetailsPage/PokemonDetails";
 
 function App() {
   return (

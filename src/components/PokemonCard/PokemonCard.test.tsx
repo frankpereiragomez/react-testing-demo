@@ -3,8 +3,9 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { pokemonsMock } from "../../mocks/pokemonsMock";
 import PokemonCard from "./PokemonCard";
-import PokemonDetails from "../../pages/PokemonDetails";
+
 import wrapWithRouter from "../../utils/testUtils";
+import PokemonDetails from "../../pages/PokemonDetailsPage/PokemonDetails";
 
 describe("Given a PokemonCard component", () => {
   const { id: pokemonId, name: pokemonName } = pokemonsMock[0];
