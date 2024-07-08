@@ -32,25 +32,36 @@ const getPokemons = async (): Promise<PokemonStructure[]> => {
 
   const { results } = data;
 
-  const promisesResult = results.map((pokemon: ApiResponse) => {
-    return fetch(pokemon.url)
-      .then((response) => {
-        if (!response.ok) {
-          if (response.status < 500) {
-            throw new ClientError("Client error occurred while fetching");
-          } else {
-            throw new ServerError("Server error ocurred while fetching");
-          }
-        }
-        //TODO
-        // error handling in case of parse failure
-        return response.json() as Promise<PokemonStructure>;
-      })
-      .catch((error) => {
-        throw new SystemError(
-          "A system error occurred: " + (error as Error).message
-        );
-      });
+  const promisesResult = results.map(async (pokemon: ApiResponse) => {
+    let response;
+
+    try {
+      response = await fetch(pokemon.url);
+    } catch (error) {
+      throw new SystemError(
+        `A system error occurred: ${(error as Error).message}`
+      );
+    }
+
+    if (!response.ok) {
+      if (response.status < 500) {
+        throw new ClientError("Client error occurred while fetching");
+      } else {
+        throw new ServerError("Server error ocurred while fetching");
+      }
+    }
+
+    try {
+      const data = await response.json();
+
+      return data as PokemonStructure;
+    } catch (error) {
+      throw new SystemError(
+        `A system error occurred while parsing the response for ${
+          pokemon.name
+        }: ${(error as Error).message}`
+      );
+    }
   });
 
   try {
