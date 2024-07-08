@@ -9,7 +9,7 @@ describe("Given a usePokemonDetails custom hook", () => {
       const { result } = renderHook(() => usePokemonDetails("4"));
 
       expect(result.current.error).toBe(null);
-      // expect(result.current.pokemonDetails).toBe(null);
+      expect(result.current.pokemonDetails).toBe(null);
     });
 
     test("Then it should return an object with an error prop setting to null and the charmander details", async () => {

@@ -9,7 +9,7 @@ const PokemonDetails = (): React.ReactElement => {
   return (
     <>
       {error ? (
-        <p>{error}</p>
+        <p>{error.message}</p>
       ) : (
         <article>
           <img

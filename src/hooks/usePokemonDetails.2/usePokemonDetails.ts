@@ -4,14 +4,14 @@ import pokemonServices from "../../services/pokemonServices";
 
 interface usePokemonDetailsStructure {
   pokemonDetails: PokemonStructure | null;
-  error: Error | null;
+  error: string | null;
 }
 
 const usePokemonDetails = (id: string): usePokemonDetailsStructure => {
   const [pokemonDetails, setPokemonDetails] = useState<PokemonStructure | null>(
     null
   );
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -21,7 +21,7 @@ const usePokemonDetails = (id: string): usePokemonDetailsStructure => {
         setPokemonDetails(response);
         setError(null);
       } catch (error) {
-        setError(error as Error);
+        setError((error as Error).message);
       }
     };
 

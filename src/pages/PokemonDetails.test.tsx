@@ -43,10 +43,10 @@ describe("Given a PokemonDetails component", () => {
   });
 
   describe("When it's rendered with an id that does not exist", () => {
-    test("Then it should show the 'Failed to fetch' error message", async () => {
+    test("Then it should show the 'A system error occurred: Failed to fetch' error message", async () => {
       server.resetHandlers(...errorHandlers);
 
-      const expectedErrorMessage = "Failed to fetch";
+      const expectedErrorMessage = "A system error occurred: Failed to fetch";
 
       const { element } = wrapWithRouter(route, ["/pokemon/12"]);
 
