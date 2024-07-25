@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 
-interface PokemonProps {
+interface PokemonCardProps {
   image: string;
   name: string;
   id: number;
 }
 
-const PokemonCard = ({ image, name, id }: PokemonProps): React.ReactElement => {
+const PokemonCard = ({
+  image,
+  name,
+  id,
+}: PokemonCardProps): React.ReactElement => {
   return (
     <>
       <article className="pokemon-card">

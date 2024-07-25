@@ -31,6 +31,7 @@ export const errorHandlers = [
     return HttpResponse.error();
   }),
 
+  //causes a client error
   http.get(`${apiUrl}/:id`, ({ params }) => {
     const { id } = params;
 
@@ -39,7 +40,17 @@ export const errorHandlers = [
     );
 
     if (!selectedPokemon) {
-      return HttpResponse.error();
+      return new HttpResponse(null, { status: 404 });
     }
+  }),
+
+  // causes a server error
+  // http.get(`${apiUrl}/:id`, () => {
+  //   return new HttpResponse(null, { status: 500 });
+  // }),
+
+  // causes a system error
+  http.get(`${apiUrl}/:id`, () => {
+    return HttpResponse.error();
   }),
 ];

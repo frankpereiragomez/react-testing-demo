@@ -43,12 +43,29 @@ describe("Given a PokemonDetails component", () => {
   });
 
   describe("When it's rendered with an id that does not exist", () => {
-    test("Then it should show the 'A system error occurred: Failed to fetch' error message", async () => {
+    test("Then it should show the a client error occurred: 'Client error occurred while fetching' error message", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const expectedErrorMessage = "Client error occurred while fetching";
+
+      const { element } = wrapWithRouter(route, ["/pokemon/12"]);
+
+      render(element);
+
+      const errorMessage = await waitFor(() =>
+        screen.getByText(expectedErrorMessage)
+      );
+      expect(errorMessage).toBeInTheDocument();
+    });
+  });
+
+  describe("When it's rendered and a system error ocurred", () => {
+    test("Then it should show the a 'A system error occurred: Failed to fetch' error message", async () => {
       server.resetHandlers(...errorHandlers);
 
       const expectedErrorMessage = "A system error occurred: Failed to fetch";
 
-      const { element } = wrapWithRouter(route, ["/pokemon/12"]);
+      const { element } = wrapWithRouter(route, ["/pokemon/1"]);
 
       render(element);
 

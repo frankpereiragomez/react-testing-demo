@@ -25,7 +25,7 @@ describe("Given a PokemonList component", () => {
     });
   });
 
-  describe("When it's rendered and fail getting the pokemon data", () => {
+  describe("When it's rendered and fail getting the pokemon data with a system error", () => {
     test("Then it should show the 'A system error occurred: Failed to fetch' error message", async () => {
       server.use(...errorHandlers);
 

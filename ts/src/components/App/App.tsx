@@ -1,7 +1,8 @@
 import { Outlet } from "react-router-dom";
 import "./style.css";
+import React from "react";
 
-function App() {
+const App = (): React.ReactElement => {
   return (
     <>
       <main>
@@ -10,6 +11,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;

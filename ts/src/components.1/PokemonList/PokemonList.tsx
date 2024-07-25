@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import { ApiResponse, PokemonStructure } from "../../types";
 import PokemonCard from "../PokemonCard/PokemonCard";

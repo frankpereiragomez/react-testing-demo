@@ -1,3 +1,4 @@
+import React from "react";
 import usePokemonDetails from "../hooks/usePokemonDetails.1/usePokemonDetails";
 import "./style.css";
 
